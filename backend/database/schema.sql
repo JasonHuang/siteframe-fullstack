@@ -1,5 +1,5 @@
--- SiteFrame 数据库表结构
--- 请在 Supabase 控制台的 SQL 编辑器中执行此文件
+-- SiteFrame 数据库架构
+-- 请在 PostgreSQL 数据库中执行此文件
 
 -- 启用必要的扩展
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -311,7 +311,7 @@ ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO settings (key, value, type, description) VALUES
     ('site_title', 'SiteFrame', 'STRING', '网站标题'),
-    ('site_description', '基于 Next.js 和 Supabase 的现代化内容管理系统', 'STRING', '网站描述'),
+    ('site_description', '基于 Next.js 的现代化内容管理系统', 'STRING', '网站描述'),
     ('posts_per_page', '10', 'NUMBER', '每页显示的文章数量'),
     ('allow_comments', 'true', 'BOOLEAN', '是否允许评论'),
     ('site_logo', '', 'STRING', '网站 Logo URL'),

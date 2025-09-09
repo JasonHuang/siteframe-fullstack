@@ -180,7 +180,7 @@ export interface PaginationParams {
   sort_order?: 'asc' | 'desc';
 }
 
-// Supabase Auth 类型扩展
+// 用户认证类型扩展
 export interface AuthUser {
   id: string;
   email?: string | undefined;

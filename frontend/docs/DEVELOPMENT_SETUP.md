@@ -18,7 +18,7 @@ cp .env.example .env
 
 ### 3. 数据库初始化
 ```bash
-# 初始化 Supabase 数据库
+# 初始化数据库
 npm run db:init
 
 # 启动开发服务器
@@ -30,7 +30,7 @@ npm run dev
 ### 数据库管理
 ```bash
 # 生成 TypeScript 类型定义
-npm run supabase:types
+npm run type-check
 
 # 重新初始化数据库数据
 npm run db:seed
@@ -52,10 +52,9 @@ npm run type-check
 
 ```
 siteframe/
-├── database/
-│   └── schema.sql       # 数据库架构
+
 ├── scripts/
-│   └── init-supabase.ts # 数据库初始化脚本
+│   └── init-database.ts # 数据库初始化脚本
 ├── src/
 │   ├── app/            # Next.js App Router
 │   ├── components/     # React 组件
@@ -68,9 +67,9 @@ siteframe/
 ## 常见问题
 
 ### TypeScript 错误
-如果遇到 Supabase 连接错误：
-1. 确保 `.env` 文件中的 Supabase 配置正确
-2. 检查 Supabase 项目是否已创建并运行
+如果遇到数据库连接错误：
+1. 确保 `.env` 文件中的数据库配置正确
+2. 检查 PostgreSQL 数据库是否已启动
 3. 重启 TypeScript 服务器
 
 ### 数据库连接问题
@@ -122,7 +121,7 @@ npm run db:migrate:deploy
 
 - **框架**: Next.js 14 (App Router)
 - **语言**: TypeScript
-- **数据库**: Supabase (PostgreSQL)
+- **数据库**: PostgreSQL
 - **样式**: Tailwind CSS
 - **代码质量**: ESLint + Prettier
 - **部署**: Vercel (推荐)
@@ -130,5 +129,5 @@ npm run db:migrate:deploy
 ## 获取帮助
 
 - [Next.js 文档](https://nextjs.org/docs)
-- [Supabase 文档](https://supabase.com/docs)
+- [PostgreSQL 文档](https://www.postgresql.org/docs/)
 - [Tailwind CSS 文档](https://tailwindcss.com/docs)

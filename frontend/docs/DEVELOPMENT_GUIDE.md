@@ -610,9 +610,9 @@ pnpm clean:deps
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:e2e": "playwright test",
-    "db:init": "tsx scripts/init-supabase.ts",
-"db:seed": "tsx scripts/init-supabase.ts",
-"supabase:types": "supabase gen types typescript --project-id YOUR_PROJECT_ID --schema public > lib/supabase-types.ts"
+    "db:init": "tsx scripts/init-database.ts",
+"db:seed": "tsx scripts/init-database.ts",
+"type-check": "tsc --noEmit"
     "clean": "rm -rf .next out dist",
     "clean:deps": "rm -rf node_modules pnpm-lock.yaml && pnpm install",
     "analyze": "ANALYZE=true next build"

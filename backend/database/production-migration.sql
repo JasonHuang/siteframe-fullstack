@@ -2,7 +2,7 @@
 -- 版本: 1.0.0
 -- 创建日期: 2024
 -- 说明: 此脚本包含完整的数据库表结构、索引、触发器、RLS策略和初始数据
--- 使用方法: 在 Supabase 控制台的 SQL 编辑器中执行此文件
+-- 使用方法: 在 PostgreSQL 数据库中执行此文件
 
 -- ============================================================================
 -- 1. 启用必要的扩展
@@ -624,8 +624,8 @@ ON CONFLICT (slug) DO NOTHING;
 -- 插入系统设置
 INSERT INTO settings (key, value, type, description) VALUES
     ('site_title', 'SiteFrame', 'STRING', '网站标题'),
-    ('site_description', '基于 Next.js 和 Supabase 的现代化内容管理系统', 'STRING', '网站描述'),
-    ('site_keywords', 'CMS, Next.js, Supabase, TypeScript, React', 'STRING', '网站关键词'),
+    ('site_description', '基于 Next.js 的现代化内容管理系统', 'STRING', '网站描述'),
+    ('site_keywords', 'CMS, Next.js, TypeScript, React', 'STRING', '网站关键词'),
     ('posts_per_page', '10', 'NUMBER', '每页显示的文章数量'),
     ('allow_comments', 'true', 'BOOLEAN', '是否允许评论'),
     ('allow_registration', 'false', 'BOOLEAN', '是否允许用户注册'),
@@ -832,8 +832,8 @@ ON CONFLICT (theme_id, setting_key) DO NOTHING;
 -- ============================================================================
 
 -- 设置数据库参数优化
--- 注意：这些设置需要数据库管理员权限，在 Supabase 中可能无法直接执行
--- 可以在 Supabase 控制台的数据库设置中配置
+-- 注意：这些设置需要数据库管理员权限
+-- 可以在 PostgreSQL 数据库管理工具中配置
 
 -- 创建分区表（如果数据量很大）
 -- 这里以内容表为例，按创建时间分区

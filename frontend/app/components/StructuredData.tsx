@@ -15,7 +15,7 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
           name: 'SiteFrame',
-          description: '基于 Next.js 和 Supabase 的现代化内容管理系统',
+          description: '基于 Next.js 的现代化内容管理系统',
           url: baseUrl,
           potentialAction: {
             '@type': 'SearchAction',

@@ -200,7 +200,7 @@ ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO settings (key, value, type, description) VALUES
     ('site_title', 'SiteFrame', 'STRING', '网站标题'),
-    ('site_description', '基于 Next.js 和 Supabase 的现代化内容管理系统', 'STRING', '网站描述'),
+    ('site_description', '基于 Next.js 的现代化内容管理系统', 'STRING', '网站描述'),
     ('posts_per_page', '10', 'NUMBER', '每页显示的文章数量'),
     ('allow_comments', 'true', 'BOOLEAN', '是否允许评论')
 ON CONFLICT (key) DO NOTHING;

@@ -1,4 +1,4 @@
-// 统一的API客户端 - 替代直接Supabase连接
+// 统一的API客户端
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 // 获取存储的认证令牌

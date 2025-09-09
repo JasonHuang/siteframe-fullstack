@@ -12,8 +12,8 @@ export const metadata: Metadata = {
     default: 'SiteFrame - 现代化内容管理系统',
     template: '%s | SiteFrame'
   },
-  description: '基于 Next.js 和 Supabase 的现代化内容管理系统，提供高效的网站建设和内容管理解决方案',
-  keywords: ['Next.js', 'Supabase', '内容管理系统', 'CMS', '网站建设', '现代化开发'],
+  description: '基于 Next.js 的现代化内容管理系统，提供高效的网站建设和内容管理解决方案',
+  keywords: ['Next.js', '内容管理系统', 'CMS', '网站建设', '现代化开发'],
   authors: [{ name: 'SiteFrame Team' }],
   creator: 'SiteFrame',
   publisher: 'SiteFrame',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: 'zh_CN',
     url: 'https://siteframe.example.com',
     title: 'SiteFrame - 现代化内容管理系统',
-    description: '基于 Next.js 和 Supabase 的现代化内容管理系统，提供高效的网站建设和内容管理解决方案',
+    description: '基于 Next.js 的现代化内容管理系统，提供高效的网站建设和内容管理解决方案',
     siteName: 'SiteFrame',
     images: [
       {
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'SiteFrame - 现代化内容管理系统',
-    description: '基于 Next.js 和 Supabase 的现代化内容管理系统，提供高效的网站建设和内容管理解决方案',
+    description: '基于 Next.js 的现代化内容管理系统，提供高效的网站建设和内容管理解决方案',
     images: ['/og-image.jpg'],
     creator: '@siteframe',
   },
