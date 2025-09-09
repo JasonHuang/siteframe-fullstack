@@ -17,6 +17,7 @@ const nextConfig = {
   }, // 启用独立输出模式，用于容器化部署
   images: {
     domains: ['localhost', 'fujiess.com', 'www.fujiess.com'],
+    unoptimized: true,
   },
   // 暂时禁用严格模式进行调试
   reactStrictMode: false,
