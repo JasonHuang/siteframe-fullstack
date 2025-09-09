@@ -1350,203 +1350,176 @@ const theme: ModernTheme = {
          text-decoration: none;
        }
 
+       /* Desktop navigation (>=768px) */
        @media (min-width: 768px) {
-         .desktop-nav {
-           display: block;
-         }
-
-         .header-cta {
-           display: block;
-         }
-
-         .mobile-menu-button {
-           display: none;
-         }
-
-         .mobile-nav {
-           display: none !important;
-         }
+         .desktop-nav { display: block; }
+         .header-cta { display: block; }
+         .mobile-menu-button { display: none; }
+         .mobile-nav,
+         .mobile-nav.open { display: none !important; }
        }
 
-       /* Responsive Design */
-       @media (max-width: 1024px) {
-          .about-intro {
-            grid-template-columns: 1fr;
-            gap: 3rem;
-          }
-         
-         .about-content {
-           padding: 2.5rem;
-         }
-         
-         .contact-content {
-           grid-template-columns: 1fr;
-           gap: 4rem;
-         }
-         
-         .contact-info,
-          .contact-form {
-            padding: 2.5rem;
-          }
-         
-         .footer-content {
-           grid-template-columns: 1fr 1fr;
-           gap: 2rem;
-         }
-         
-         .team-grid {
-           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-         }
+       /* Gallery Styles */
+       .gallery-section {
+         padding: 4rem 0;
        }
-       
+
+       .gallery-header {
+         text-align: center;
+         margin-bottom: 2rem;
+       }
+
+       .gallery-title {
+         font-size: var(--font-size-4xl);
+         font-weight: var(--font-weight-bold);
+         color: var(--foreground);
+         margin: 0 0 0.5rem 0;
+       }
+
+       .gallery-subtitle {
+         color: var(--color-neutral-500);
+         font-size: var(--font-size-base);
+       }
+
+       .gallery-grid {
+         display: grid;
+         gap: 1rem;
+       }
+
+       .gallery-grid-2 {
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+       }
+
+       .gallery-grid-3 {
+         grid-template-columns: repeat(3, minmax(0, 1fr));
+       }
+
+       .gallery-grid-4 {
+         grid-template-columns: repeat(4, minmax(0, 1fr));
+       }
+
+       .gallery-item {
+         cursor: pointer;
+       }
+
+       .gallery-image-wrapper {
+         position: relative;
+         border-radius: var(--border-radius-lg);
+         overflow: hidden;
+         box-shadow: var(--shadow-base);
+         background: var(--card);
+       }
+
+       .gallery-image {
+         width: 100%;
+         height: auto;
+         display: block;
+       }
+
+       .gallery-overlay {
+         position: absolute;
+         inset: 0;
+         background: rgba(0, 0, 0, 0.45);
+         opacity: 0;
+         transition: opacity 0.25s ease;
+         display: flex;
+         align-items: flex-end;
+       }
+
+       .gallery-item:hover .gallery-overlay {
+         opacity: 1;
+       }
+
+       .gallery-overlay-content {
+         color: white;
+         padding: 1rem;
+         width: 100%;
+         background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+       }
+
+       .gallery-item-title {
+         margin: 0 0 0.25rem 0;
+         font-size: var(--font-size-lg);
+         font-weight: var(--font-weight-semibold);
+       }
+
+       .gallery-item-description {
+         margin: 0;
+         font-size: var(--font-size-sm);
+         color: rgba(255,255,255,0.9);
+       }
+
+       /* Gallery Modal */
+       .gallery-modal {
+         position: fixed;
+         inset: 0;
+         background: rgba(0, 0, 0, 0.7);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         z-index: 100;
+         padding: 1rem;
+       }
+
+       .gallery-modal-content {
+         background: var(--card);
+         color: var(--foreground);
+         border-radius: var(--border-radius-xl);
+         max-width: 900px;
+         width: 100%;
+         box-shadow: var(--shadow-xl);
+         position: relative;
+         overflow: hidden;
+       }
+
+       .gallery-modal-close {
+         position: absolute;
+         top: 0.5rem;
+         right: 0.75rem;
+         background: transparent;
+         border: none;
+         color: white;
+         font-size: 2rem;
+         line-height: 1;
+         cursor: pointer;
+         z-index: 101;
+       }
+
+       .gallery-modal-image {
+         background: black;
+       }
+
+       .modal-image {
+         width: 100%;
+         height: auto;
+         display: block;
+       }
+
+       .gallery-modal-info {
+         padding: 1rem 1.25rem 1.5rem;
+       }
+
+       .modal-title {
+         margin: 0 0 0.25rem 0;
+         font-size: var(--font-size-xl);
+         font-weight: var(--font-weight-semibold);
+       }
+
+       .modal-description {
+         margin: 0;
+         color: var(--color-neutral-600);
+         font-size: var(--font-size-sm);
+       }
+
        @media (max-width: 768px) {
-         .container {
-           padding: 0 0.75rem;
-         }
-
-         .card {
-           padding: 1rem;
-         }
-         
-         .hero-title {
-           font-size: var(--font-size-3xl);
-         }
-         
-         .hero-description {
-           font-size: var(--font-size-base);
-         }
-         
-         .hero-actions {
-           flex-direction: column;
-           align-items: center;
-         }
-         
-         .services-title,
-         .about-title,
-         .contact-title {
-           font-size: var(--font-size-3xl);
-         }
-         
-         .services-grid {
-           grid-template-columns: 1fr;
-         }
-         
-         .about-section {
-            padding: 2rem 0;
-          }
-         
-         .about-intro {
-            gap: 2.5rem;
-          }
-         
-         .about-content {
-            padding: 1.25rem;
-          }
-         
-         .team-grid {
-           grid-template-columns: 1fr;
-           gap: 2rem;
-         }
-         
-         .team-member {
-           padding: 2rem;
-         }
-         
-         .contact-section {
-            padding: 2rem 0;
-          }
-         
-         .contact-content {
-           gap: 2rem;
-         }
-         
-         .contact-info,
-            .contact-form {
-              padding: 1.25rem;
-            }
-         
-         .form-row {
-           grid-template-columns: 1fr;
-         }
-         
-         .footer-content {
-           grid-template-columns: 1fr;
-           gap: 2rem;
-         }
-         
-         .footer-bottom {
-           flex-direction: column;
-           text-align: center;
-         }
-         
-         .footer-bottom-links {
-           justify-content: center;
-         }
-         
-         .values-grid {
-           grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-         }
+         .gallery-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+         .gallery-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+         .gallery-grid-2 { grid-template-columns: 1fr; }
        }
-       
+
        @media (max-width: 480px) {
-         .container {
-           padding: 0 0.5rem;
-         }
-         
-         .hero-section {
-           padding: 3rem 0;
-         }
-         
-         .hero-title {
-           font-size: var(--font-size-2xl);
-         }
-         
-         .services-section,
-          .about-section,
-          .contact-section {
-            padding: 1.5rem 0;
-          }
-         
-         .service-card,
-           .team-member,
-           .contact-form,
-           .contact-info {
-             padding: 1rem;
-           }
-           
-           
-         
-          .about-content {
-            padding: 1rem;
-          }
-         
-         .detail-item {
-           padding: 1rem;
-         }
-         
-         .avatar-placeholder {
-           width: 70px;
-           height: 70px;
-           font-size: var(--font-size-lg);
-         }
-         
-         .values-grid {
-           grid-template-columns: 1fr;
-           gap: 0.75rem;
-         }
-         
-         .value-item {
-           padding: 0.75rem;
-         }
-         
-         .footer {
-           padding: 1.5rem 0 1rem;
-         }
-         
-         .footer-bottom-links {
-           flex-direction: column;
-           gap: 0.5rem;
-         }
+         .gallery-section { padding: 2rem 0; }
+         .gallery-title { font-size: var(--font-size-3xl); }
        }
      `
   },

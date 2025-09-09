@@ -53,8 +53,14 @@ const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
     return response;
   } catch (error) {
     // 对于认证相关的错误，不在控制台输出错误信息
-    if (!(error instanceof Error && (error.message.includes('未提供认证令牌') || error.message.includes('无效的认证令牌')))) {
+    const isAuthOrTheme = endpoint.startsWith('/auth') || endpoint.startsWith('/themes');
+    const isAuthTokenError = error instanceof Error && (error.message.includes('未提供认证令牌') || error.message.includes('无效的认证令牌'));
+
+    if (!isAuthTokenError && !isAuthOrTheme) {
       console.error('API request failed:', error);
+    } else if (process.env.NODE_ENV === 'development') {
+      // 开发模式下，对认证与主题相关的网络错误降级为警告，避免打断本地预览
+      console.warn('[dev] API request non-blocking failure:', endpoint);
     }
     throw error;
   }

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 interface GalleryItem {
@@ -72,6 +72,41 @@ const Gallery: React.FC<GalleryProps> = ({
   showModal = true
 }) => {
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+  const [computedItems, setComputedItems] = useState<GalleryItem[]>(items || defaultGalleryItems);
+
+  // Try to load items from /res/gallery.json if available, fallback to provided/default items
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadManifest() {
+      try {
+        const res = await fetch('/res/gallery.json', { cache: 'no-store' });
+        if (!res.ok) return; // likely 404 -> no manifest, keep defaults
+        const data = await res.json();
+        const manifestItems: GalleryItem[] = Array.isArray(data)
+          ? data
+          : Array.isArray(data?.items)
+            ? data.items
+            : [];
+        if (!cancelled && manifestItems.length > 0) {
+          // Ensure each item has an id; if missing, derive from src
+          const normalized = manifestItems.map((it, idx) => ({
+            id: it.id || String(idx + 1),
+            src: it.src,
+            alt: it.alt || it.title || `Gallery Image ${idx + 1}`,
+            title: it.title,
+            description: it.description,
+          }));
+          setComputedItems(normalized);
+        }
+      } catch (e) {
+        // silently ignore when manifest not present or invalid; keep defaults
+      }
+    }
+
+    loadManifest();
+    return () => { cancelled = true };
+  }, []);
 
   const openModal = (item: GalleryItem) => {
     if (showModal) {
@@ -94,7 +129,7 @@ const Gallery: React.FC<GalleryProps> = ({
         </div>
         
         <div className={`gallery-grid gallery-grid-${columns}`}>
-          {items.map((item) => (
+          {computedItems.map((item) => (
             <div 
               key={item.id} 
               className="gallery-item"
