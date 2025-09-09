@@ -30,8 +30,8 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 # 复制构建产物
-# 创建public目录（如果不存在）
-RUN mkdir -p ./public
+# 复制public目录（包含主题图片等静态资源）
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 # 复制standalone构建产物
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
