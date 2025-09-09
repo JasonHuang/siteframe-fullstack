@@ -1,3 +1,4 @@
+# 轻量化后端 - 使用Alpine减少镜像大小
 FROM node:18-alpine
 
 # 设置工作目录
@@ -7,7 +8,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # 安装依赖
-RUN npm ci --only=production
+RUN npm ci --only=production --no-audit --no-fund && \
+    npm cache clean --force
 
 # 复制源代码
 COPY src/ ./src/
