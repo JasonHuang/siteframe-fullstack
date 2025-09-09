@@ -16,7 +16,7 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   }, // 启用独立输出模式，用于容器化部署
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'fujiess.com', 'www.fujiess.com'],
   },
   // 暂时禁用严格模式进行调试
   reactStrictMode: false,
