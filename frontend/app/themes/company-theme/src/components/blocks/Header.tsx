@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 
 interface HeaderProps {
@@ -19,11 +19,11 @@ interface HeaderProps {
 }
 
 const defaultNavigation = [
-  { label: 'Home', href: '/', active: true },
-  { label: 'About Us', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Contact Us', href: '/contact' }
+  { label: 'Home', href: '/#home', active: true },
+  { label: 'About Us', href: '/#about' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Portfolio', href: '/#portfolio' },
+  { label: 'Contact Us', href: '/#contact' }
 ];
 
 const Header: React.FC<HeaderProps> = ({
@@ -32,11 +32,73 @@ const Header: React.FC<HeaderProps> = ({
   navigation = defaultNavigation,
   showCTA = true,
   ctaText = "Free Consultation",
-  ctaLink = "/contact",
+  ctaLink = "/#contact",
   showNavigation = true,
   showLogo = true
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('home');
+
+  const sectionIds = useMemo(() => {
+    return navigation
+      .map((nav) => nav.href.match(/#(.+)$/)?.[1])
+      .filter((id): id is string => !!id);
+  }, [navigation]);
+
+  useEffect(() => {
+    // Initialize from URL hash on mount
+    if (typeof window !== 'undefined') {
+      const initialHash = window.location.hash?.replace('#', '') || 'home';
+      setActiveSection(initialHash);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        root: null,
+        // Trigger when the section top enters upper half of viewport
+        rootMargin: '0px 0px -60% 0px',
+        threshold: 0.25,
+      }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+
+    return () => observer.disconnect();
+  }, [sectionIds]);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/#')) {
+      e.preventDefault();
+      const id = href.split('#')[1];
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Update URL hash without reload
+        if (typeof window !== 'undefined' && window.history) {
+          window.history.pushState(null, '', `/#${id}`);
+        }
+        setActiveSection(id);
+        setIsMobileMenuOpen(false);
+      }
+    }
+  };
 
   return (
     <>
@@ -61,16 +123,21 @@ const Header: React.FC<HeaderProps> = ({
             {showNavigation && (
               <nav className="desktop-nav">
                 <ul className="nav-list">
-                  {navigation.map((item, index) => (
-                    <li key={index} className="nav-item">
-                      <a 
-                        href={item.href} 
-                        className={`nav-link ${item.active ? 'active' : ''}`}
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
+                  {navigation.map((item, index) => {
+                    const id = item.href.match(/#(.+)$/)?.[1];
+                    const isActive = id ? activeSection === id : !!item.active;
+                    return (
+                      <li key={index} className="nav-item">
+                        <a
+                          href={item.href}
+                          className={`nav-link ${isActive ? 'active' : ''}`}
+                          onClick={(e) => handleNavClick(e, item.href)}
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             )}
@@ -78,14 +145,14 @@ const Header: React.FC<HeaderProps> = ({
             {/* CTA Button */}
             {showCTA && (
               <div className="header-cta">
-                <a href={ctaLink} className="cta-button">
+                <a href={ctaLink} className="cta-button" onClick={(e) => handleNavClick(e, ctaLink)}>
                   {ctaText}
                 </a>
               </div>
             )}
 
             {/* Mobile Menu Button */}
-            <button 
+            <button
               className="mobile-menu-button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
@@ -102,23 +169,27 @@ const Header: React.FC<HeaderProps> = ({
           {showNavigation && (
             <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
               <ul className="mobile-nav-list">
-                {navigation.map((item, index) => (
-                  <li key={index} className="mobile-nav-item">
-                    <a 
-                      href={item.href} 
-                      className={`mobile-nav-link ${item.active ? 'active' : ''}`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
+                {navigation.map((item, index) => {
+                  const id = item.href.match(/#(.+)$/)?.[1];
+                  const isActive = id ? activeSection === id : !!item.active;
+                  return (
+                    <li key={index} className="mobile-nav-item">
+                      <a
+                        href={item.href}
+                        className={`mobile-nav-link ${isActive ? 'active' : ''}`}
+                        onClick={(e) => handleNavClick(e, item.href)}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  );
+                })}
                 {showCTA && (
                   <li className="mobile-nav-item">
-                    <a 
-                      href={ctaLink} 
+                    <a
+                      href={ctaLink}
                       className="mobile-cta-button"
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={(e) => handleNavClick(e, ctaLink)}
                     >
                       {ctaText}
                     </a>
