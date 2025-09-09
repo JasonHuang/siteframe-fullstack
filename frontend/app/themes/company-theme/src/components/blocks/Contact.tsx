@@ -19,16 +19,16 @@ interface ContactProps {
 }
 
 const defaultContactInfo: ContactInfo = {
-  address: '1 Jianguomenwai Avenue, Chaoyang District, Beijing',
-  phone: '+86 10 1234 5678',
-  email: 'contact@company.com',
-  workingHours: 'Monday to Friday 9:00-18:00',
-  website: 'www.company.com'
+  address: 'Saipan, Northern Mariana Islands',
+  phone: '+1 (670) 234-5678',
+  email: 'info@fujiess.com',
+  workingHours: 'Monday to Friday 8:00-17:00',
+  website: 'www.fujiess.com'
 };
 
 const Contact: React.FC<ContactProps> = ({ 
-  title = "Contact Us",
-  subtitle = "We look forward to working with you",
+  title = "Contact Fujiess",
+  subtitle = "Ready to power your future with solar energy?",
   contactInfo = defaultContactInfo,
   showForm = true,
   showMap = false

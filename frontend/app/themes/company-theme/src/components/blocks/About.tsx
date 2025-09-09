@@ -30,39 +30,39 @@ interface AboutProps {
 const defaultTeamMembers: TeamMember[] = [
   {
     id: '1',
-    name: 'John Zhang',
-    position: 'Chief Executive Officer',
-    bio: 'With 15 years of industry experience, dedicated to driving enterprise innovation and development.',
+    name: 'David Fuji',
+    position: 'Founder & CEO',
+    bio: 'Renewable energy pioneer with 20+ years experience in solar technology and sustainable energy solutions.',
     avatar: '/themes/company-theme/images/team/team-01.jpg'
   },
   {
     id: '2',
-    name: 'Lisa Li',
-    position: 'Chief Technology Officer',
-    bio: 'Senior technical expert responsible for company technology strategy planning and implementation.',
+    name: 'Sarah Chen',
+    position: 'Chief Engineer',
+    bio: 'Solar systems expert specializing in energy storage design and installation optimization.',
     avatar: '/themes/company-theme/images/team/team-02.jpg'
   },
   {
     id: '3',
-    name: 'Michael Wang',
-    position: 'Chief Marketing Officer',
-    bio: 'Marketing expert specializing in brand building and market expansion.',
+    name: 'Mark Rodriguez',
+    position: 'Project Manager',
+    bio: 'Experienced project coordinator ensuring seamless solar installation and customer satisfaction.',
     avatar: '/themes/company-theme/images/team/team-03.jpg'
   }
 ];
 
 const defaultValues = [
-  'Integrity First',
-  'Customer Focused',
-  'Continuous Innovation',
-  'Team Collaboration'
+  'Sustainable Energy',
+  'Quality Installation',
+  'Customer Satisfaction',
+  'Environmental Responsibility'
 ];
 
 const About: React.FC<AboutProps> = ({ 
-  title = "About Us",
-  description = "We are a professional enterprise focused on providing high-quality services to our clients. Since our establishment, we have always adhered to customer-oriented approach and technology-driven innovation, providing comprehensive solutions for clients across various industries.",
-  mission = "Through professional services and innovative solutions, we help clients achieve their business goals and create greater value.",
-  vision = "To become the industry-leading service provider, winning customer trust through excellent quality and service.",
+  title = "About Fujiess",
+  description = "Fujiess is a leading solar power system provider based in Saipan, specializing in residential and commercial energy storage solutions. Since our establishment, we have been committed to bringing clean, sustainable energy solutions to the Pacific region, helping families and businesses reduce their carbon footprint while achieving energy independence.",
+  mission = "To accelerate the transition to sustainable energy by providing reliable, efficient solar power systems and energy storage solutions that empower our customers to harness the power of the sun.",
+  vision = "To become the premier renewable energy provider in the Pacific region, creating a sustainable future through innovative solar technology and exceptional customer service.",
   values = defaultValues,
   teamMembers = defaultTeamMembers,
   showTeam = true,

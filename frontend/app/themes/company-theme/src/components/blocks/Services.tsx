@@ -22,30 +22,30 @@ interface ServicesProps {
 const defaultServices: Service[] = [
   {
     id: '1',
-    title: 'Professional Consulting',
-    description: 'Providing professional industry consulting services to help enterprises develop strategies and solutions.',
-    icon: '💼',
+    title: 'Residential Solar Systems',
+    description: 'Complete home solar power solutions with energy storage systems for maximum energy independence and cost savings.',
+    icon: '🏠',
     image: '/themes/company-theme/images/services/service-01.jpg'
   },
   {
     id: '2',
-    title: 'Technical Development',
-    description: 'Our professional technical team provides customized software development services for clients.',
-    icon: '⚙️',
+    title: 'Commercial Energy Storage',
+    description: 'Large-scale commercial and industrial energy storage solutions including HPS100 systems for businesses.',
+    icon: '🏢',
     image: '/themes/company-theme/images/services/service-02.jpg'
   },
   {
     id: '3',
-    title: 'Project Management',
-    description: 'Experienced project management team ensuring projects are completed on time and with quality.',
-    icon: '📊',
+    title: 'Solar Installation & Maintenance',
+    description: 'Professional solar panel installation, system commissioning, and ongoing maintenance services.',
+    icon: '🔧',
     image: '/themes/company-theme/images/services/service-03.jpg'
   },
   {
     id: '4',
-    title: 'After-sales Support',
-    description: 'Comprehensive after-sales support services to ensure customer satisfaction.',
-    icon: '🛠️',
+    title: 'Energy Consultation',
+    description: 'Expert energy audits and consultation to optimize your solar system design and maximize ROI.',
+    icon: '💡',
     image: '/themes/company-theme/images/services/service-04.jpg'
   }
 ];

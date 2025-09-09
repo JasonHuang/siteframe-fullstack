@@ -12,11 +12,11 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ 
-  title = "Welcome to Our Enterprise",
-  subtitle = "Professional · Innovative · Reliable",
-  description = "We are committed to providing our clients with the highest quality products and services, leveraging professional expertise and innovative concepts to drive your business success.",
-  ctaText = "Learn More",
-  ctaLink = "/about",
+  title = "Fujiess Solar Power Systems",
+  subtitle = "Clean Energy · Sustainable Future · Reliable Solutions",
+  description = "Leading solar power system provider in Saipan. We specialize in residential and commercial energy storage solutions, helping you harness the power of the sun for a sustainable future.",
+  ctaText = "Get Solar Quote",
+  ctaLink = "/contact",
   backgroundImage = "/themes/company-theme/images/hero/hero-01.jpg"
 }) => {
   const heroStyle = backgroundImage ? {

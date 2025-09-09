@@ -36,27 +36,27 @@ const defaultQuickLinks = [
 ];
 
 const defaultServices = [
-  { label: 'Business Consulting', href: '/services/consulting' },
-  { label: 'Technical Development', href: '/services/development' },
-  { label: 'Digital Marketing', href: '/services/marketing' },
-  { label: 'Brand Design', href: '/services/design' },
-  { label: 'Operational Support', href: '/services/support' }
+  { label: 'Residential Solar', href: '/services/residential' },
+  { label: 'Commercial Storage', href: '/services/commercial' },
+  { label: 'Solar Installation', href: '/services/installation' },
+  { label: 'Energy Consultation', href: '/services/consultation' },
+  { label: 'System Maintenance', href: '/services/maintenance' }
 ];
 
 const defaultSocialLinks = [
-  { platform: 'WeChat', url: '#', icon: '💬' },
-  { platform: 'Weibo', url: '#', icon: '📱' },
+  { platform: 'Facebook', url: '#', icon: '📘' },
+  { platform: 'Instagram', url: '#', icon: '📷' },
   { platform: 'LinkedIn', url: '#', icon: '💼' },
-  { platform: 'Email', url: 'mailto:info@company.com', icon: '📧' }
+  { platform: 'Email', url: 'mailto:info@fujiess.com', icon: '📧' }
 ];
 
 const Footer: React.FC<FooterProps> = ({
-  companyName = "Company Name",
-  companyDescription = "We are a professional business service provider, committed to providing high-quality solutions and services to our clients.",
+  companyName = "Fujiess",
+  companyDescription = "Leading solar energy solutions provider in Saipan, specializing in residential and commercial energy storage systems.",
   contactInfo = {
-    address: "Business Center, Chaoyang District, Beijing",
-    phone: "+86 400-123-4567",
-    email: "info@company.com"
+    address: "Saipan, Northern Mariana Islands",
+    phone: "+1 (670) 234-5678",
+    email: "info@fujiess.com"
   },
   quickLinks = defaultQuickLinks,
   services = defaultServices,

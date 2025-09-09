@@ -28,7 +28,7 @@ const defaultNavigation = [
 
 const Header: React.FC<HeaderProps> = ({
   logo,
-  companyName = "Company Name",
+  companyName = "Fujiess",
   navigation = defaultNavigation,
   showCTA = true,
   ctaText = "Free Consultation",
